@@ -1,15 +1,18 @@
 import firebase from "firebase";
 
 const DatabaseCollections = {
-  SEDES: "sedes"
+  SEDES: "sedes",
+  STUDENTS: "estudiantes"
 };
+
 export class DatabaseConnection {
   db = firebase.firestore();
   sedesCollection = this.db.collection(DatabaseCollections.SEDES);
+  studentsCollection = this.db.collection(DatabaseCollections.STUDENTS);
 
   addStudent() {
     const studentId = firebase.auth().currentUser.uid;
-    return this.sedesCollection.doc(studentId).set({
+    return this.studentsCollection.doc(studentId).set({
       studentId
     });
   }

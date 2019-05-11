@@ -25,7 +25,6 @@ export default () => {
         e.stopPropagation();
         console.log(email);
         manager.signup(email, password).then(user => {
-          const uid = user.user.uid;
           const sede: Sede = {
             institution,
             studentCapacity,
