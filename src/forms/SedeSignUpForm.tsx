@@ -76,7 +76,6 @@ export default () => {
         <Form.Group as={Col} controlId="formGridAddress2">
           <Form.Label>Capacidad de alumnos</Form.Label>
           <Form.Control
-            value={studentCapacity}
             onChange={e => setStudentCapacity(e.target.value)}
             placeholder="Número de alumnos"
           />
@@ -101,11 +100,33 @@ export default () => {
           />
         </Form.Group>
       </Form.Row>
+      <Form.Row>
+        <Form.Group as={Col} controlId="formBasicEmail">
+          <Form.Label>Teléfono</Form.Label>
+          <Form.Control
+            value={phone}
+            onChange={e => setPhone(e.target.value)}
+            type="phone"
+            placeholder="Escribe tu teléfono"
+          />
+        </Form.Group>
+
+        <Form.Group as={Col} controlId="formBasicPassword">
+          <Form.Label>Representante</Form.Label>
+          <Form.Control
+            value={representant}
+            onChange={e => setRepresentant(e.target.value)}
+            type="representant"
+            placeholder="Escribe el nombre del representante"
+          />
+        </Form.Group>
+      </Form.Row>
       <Form.Group as={Col} controlId="formGridMotivacion">
         <Form.Label>Motivación</Form.Label>
         <Form.Control
           value={motivation}
           onChange={e => setMotivation(e.target.value)}
+          placeholder="Motivación por ser sede"
         />
       </Form.Group>
       <Button variant="primary" type="submit">

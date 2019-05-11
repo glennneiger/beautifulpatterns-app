@@ -1,4 +1,5 @@
 import firebase from "firebase";
+import { string } from "prop-types";
 
 const DatabaseCollections = {
   SEDES: "sedes",
@@ -10,11 +11,9 @@ export class DatabaseConnection {
   sedesCollection = this.db.collection(DatabaseCollections.SEDES);
   studentsCollection = this.db.collection(DatabaseCollections.STUDENTS);
 
-  addStudent() {
+  addStudent(students) {
     const studentId = firebase.auth().currentUser.uid;
-    return this.studentsCollection.doc(studentId).set({
-      studentId
-    });
+    return this.studentsCollection.doc(studentId).set(students);
   }
 
   addSede(sede) {
