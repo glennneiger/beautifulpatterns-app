@@ -2,12 +2,16 @@ import React, { Component, useState } from "react";
 import { DatabaseConnection } from "../database/databaseConnection";
 import { Form, Button, Col } from "react-bootstrap";
 import { AuthenticationManager } from "../authentication/AuthenticationManager";
-
+import AuthorizedSedesList from "../lists/AuthorizedSedesList";
+import { Redirect } from "react-router-dom";
+import firebase from "firebase";
 const manager = new AuthenticationManager();
 const databaseConnection = new DatabaseConnection();
+
 export default () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  var user = firebase.auth().currentUser;
   return (
     <Form
       onSubmit={e => {
@@ -15,6 +19,11 @@ export default () => {
         e.stopPropagation();
         manager.login(email, password).catch(function(err) {
           alert("Datos erroneos");
+        });
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            alert("Has iniciado sesion");
+          }
         });
       }}
     >

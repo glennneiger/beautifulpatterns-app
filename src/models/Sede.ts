@@ -1,4 +1,5 @@
 export interface Sede {
+  email: string;
   institution: string;
   studentCapacity: number;
   availableSpaces: number;

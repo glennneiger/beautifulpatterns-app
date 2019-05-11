@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import { DatabaseConnection } from "../database/databaseConnection";
 import { Sede } from "../models/Sede";
 import { Form, Button, Col } from "react-bootstrap";
@@ -26,6 +26,7 @@ export default () => {
         console.log(email);
         manager.signup(email, password).then(user => {
           const sede: Sede = {
+            email,
             institution,
             studentCapacity,
             availableSpaces,
@@ -76,6 +77,7 @@ export default () => {
         <Form.Group as={Col} controlId="formGridAddress2">
           <Form.Label>Capacidad de alumnos</Form.Label>
           <Form.Control
+            value={studentCapacity}
             onChange={e => setStudentCapacity(e.target.value)}
             placeholder="Número de alumnos"
           />
