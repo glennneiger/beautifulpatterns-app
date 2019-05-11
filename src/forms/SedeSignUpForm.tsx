@@ -6,7 +6,7 @@ import { AuthenticationManager } from "../authentication/AuthenticationManager";
 const manager = new AuthenticationManager();
 
 const databaseConnection = new DatabaseConnection();
-
+console.log(databaseConnection.getSedes());
 export default () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
